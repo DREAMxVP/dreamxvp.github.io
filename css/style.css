@@ -1,0 +1,177 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #0f0f1a;
+  color: white;
+  padding: 30px;
+}
+
+h1 {
+  text-align: center;
+  color: #a259ff;
+}
+
+.card {
+  background: #181825;
+  padding: 25px;
+  margin: 20px auto;
+  max-width: 1200px;
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(162,89,255,0.2);
+}
+
+input {
+  padding: 10px;
+  margin: 8px 0;
+  background: #252538;
+  border: 1px solid #333;
+  color: white;
+  border-radius: 8px;
+}
+
+button {
+  padding: 10px 15px;
+  background: #a259ff;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #8b3dff;
+  transform: scale(1.05);
+}
+
+.topoComparacao {
+  display: flex;
+  gap: 40px;
+}
+
+.ladoValores {
+  flex: 1;
+}
+
+.ladoGrafico {
+  flex: 1;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  color: #a259ff;
+}
+
+tr:nth-child(1) {
+  background: rgba(162,89,255,0.15);
+  font-weight: bold;
+}
+
+canvas {
+  max-width: 100%;
+}
+
+.indicesTop {
+  display: flex;
+  gap: 15px;
+  padding: 20px 40px;
+}
+
+.indiceCard {
+  padding: 15px 20px;
+  background: #1e1e2f;
+  border-radius: 12px;
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+}
+
+.indiceCard span {
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.positivo span {
+  color: #00ff9d;
+}
+
+.negativo span {
+  color: #ff4d6d;
+}
+
+.barraPesquisa {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.barraPesquisa input {
+  width: 50%;
+  padding: 15px;
+  border-radius: 30px;
+  border: none;
+  background: #252538;
+  color: white;
+  font-size: 16px;
+}
+
+.layoutPrincipal {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 30px;
+  width: 90%;
+  margin: auto;
+}
+
+.watchlist {
+  background: #181825;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.watchItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 1px solid #2a2a3a;
+}
+
+.watchItem span {
+  font-weight: bold;
+}
+
+.conteudoPrincipal {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.alertaFlutuante {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #a259ff;
+  padding: 15px 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(162,89,255,0.5);
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.indice {
+  font-size: 18px;
+  padding: 10px 0;
+  border-bottom: 1px solid #1f1f2e;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Spending Control</title>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Estilo -->
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+  <h1>Spending Control</h1>
+  <section class="indicesTop">
+  <div class="indiceCard negativo">
+    <strong>IBOV</strong>
+    <span>-1,34%</span>
+  </div>
+
+  <div class="indiceCard positivo">
+    <strong>CDI</strong>
+    <span>+0,87%</span>
+  </div>
+
+  <div class="indiceCard negativo">
+    <strong>Dólar</strong>
+    <span>-0,45%</span>
+  </div>
+</section>
+
+<section class="barraPesquisa">
+  <input type="text" placeholder="Pesquisar ações, ETFs e investimentos">
+</section>
+
+<section class="layoutPrincipal">
+
+  <!-- ESQUERDA -->
+  <div class="watchlist">
+    <h3>Mais seguidas</h3>
+    <div id="listaAtivos"></div>
+  </div>
+  
+
+  <!-- DIREITA -->
+  <div class="conteudoPrincipal">
+    <section class="card">
+  <h2>📊 Índices em Tempo Real</h2>
+  <div class="indice" id="ibov"></div>
+  <div class="indice" id="dolar"></div>
+  <div class="indice" id="cdi"></div>
+</section>
+
+    <div class="card graficoPrincipal">
+      <canvas id="graficoRapido"></canvas>
+    </div>
+
+    <div class="card ranking">
+      <h3>Ranking de Investimentos</h3>
+      <div id="resultadoInvestimentos"></div>
+    </div>
+  </div>
+
+</section>
+
+
+  <section class="card dashboard">
+
+    <div class="topoComparacao">
+
+      <!-- 🔹 LADO ESQUERDO -->
+      <div class="ladoValores">
+
+        <h2>📊 Comparação de Investimentos</h2>
+
+        <label>Valor mensal</label>
+        <input type="number" id="valorInvestimento" placeholder="Ex: 500">
+
+        <label>Meses</label>
+        <input type="number" id="mesesInvestimento" value="12">
+
+        <!-- Ranking aparece aqui -->
+        <div id="resultadoInvestimentos"></div>
+
+      </div>
+
+      <!-- 🔹 LADO DIREITO -->
+      <div class="ladoGrafico">
+        <canvas id="graficoInvestimentos"></canvas>
+      </div>
+
+    </div>
+    <div id="tradingview_chart"></div>
+
+
+    <hr>
+
+    <!-- 🔹 Crescimento mensal animado -->
+    <h3>📈 Crescimento Mês a Mês</h3>
+    <canvas id="graficoRapido"></canvas>
+
+  </section>
+
+  <!-- Script principal -->
+  <script type="module" src="./js/app.js"></script>
+  <script src="https://s3.tradingview.com/tv.js"></script>
+
+</body>
+</html>
