@@ -18,7 +18,7 @@ export async function buscarCDI() {
     const dados = await res.json();
     return parseFloat(dados[dados.length - 1].valor);
   } catch {
-    return 12.65;   
+    return 12.65;
   }
 }
 

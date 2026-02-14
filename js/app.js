@@ -1,7 +1,7 @@
 import { simularTodos, crescimentoMensal } from "./analysis.js";
-import { 
-  atualizarGraficoInvestimentos, 
-  atualizarGraficoMensal 
+import {
+  atualizarGraficoInvestimentos,
+  atualizarGraficoMensal
 } from "./charts.js";
 
 const valorInput = document.getElementById("valorInvestimento");
@@ -112,7 +112,7 @@ async function atualizarIndice(simbolo, elementoId) {
 
     if (!quote) return;
 
-    const variacao = parseFloat(quote["10. change percent"].replace("%",""));
+    const variacao = parseFloat(quote["10. change percent"].replace("%", ""));
     const preco = parseFloat(quote["05. price"]);
 
     const elemento = document.getElementById(elementoId);
@@ -192,3 +192,132 @@ atualizarIndices();
 
 // Atualiza automaticamente a cada 30 segundos
 setInterval(atualizarIndices, 30000);
+
+document.getElementById("calcularMilhao").addEventListener("click", () => {
+
+  const valorInicial = parseFloat(document.getElementById("valorInicial").value) || 0;
+  const valorMensal = parseFloat(document.getElementById("valorMensal").value) || 0;
+  const taxaAnual = parseFloat(document.getElementById("taxaJuros").value) / 100;
+
+  const taxaMensal = Math.pow(1 + taxaAnual, 1 / 12) - 1;
+
+  let total = valorInicial;
+  let meses = 0;
+
+  while (total < 1000000) {
+    total = total * (1 + taxaMensal) + valorMensal;
+    meses++;
+
+    if (meses > 1000) break; // segurança
+  }
+
+  const anos = Math.floor(meses / 12);
+  const mesesRestantes = meses % 12;
+
+  document.getElementById("resultadoMilhao").innerHTML = `
+    <h3>📊 Resultado</h3>
+    <p>Você atingirá R$ 1.000.000 em:</p>
+    <strong>${anos} anos e ${mesesRestantes} meses</strong>
+    <p>Total acumulado: R$ ${total.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}</p>
+  `;
+
+});
+
+let graficoMilhao;
+
+document.getElementById("calcularMilhao").addEventListener("click", () => {
+
+  const valorInicial = parseFloat(document.getElementById("valorInicial").value) || 0;
+  const valorMensal = parseFloat(document.getElementById("valorMensal").value) || 0;
+  const taxaAnual = parseFloat(document.getElementById("taxaJuros").value) / 100;
+
+  const taxaMensal = Math.pow(1 + taxaAnual, 1/12) - 1;
+
+  let total = valorInicial;
+  let meses = 0;
+
+  let dados = [];
+  let labels = [];
+
+  while (total < 1000000) {
+    total = total * (1 + taxaMensal) + valorMensal;
+    meses++;
+
+    dados.push(total);
+    labels.push(`Mês ${meses}`);
+
+    if (meses > 1000) break;
+  }
+
+  const anos = Math.floor(meses / 12);
+  const mesesRestantes = meses % 12;
+
+  document.getElementById("resultadoMilhao").innerHTML = `
+    <h3>📊 Resultado</h3>
+    <p>Você atingirá R$ 1.000.000 em:</p>
+    <strong>${anos} anos e ${mesesRestantes} meses</strong>
+  `;
+
+  criarGraficoMilhao(labels, dados);
+});
+
+
+function criarGraficoMilhao(labels, dados) {
+
+  const ctx = document.getElementById("graficoMilhao").getContext("2d");
+
+  if (graficoMilhao) {
+    graficoMilhao.destroy();
+  }
+
+  graficoMilhao = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: "Crescimento do Investimento",
+          data: dados,
+          borderColor: "#a259ff",
+          backgroundColor: "rgba(162,89,255,0.1)",
+          tension: 0.4,
+          fill: true,
+          pointRadius: 0
+        },
+        {
+          label: "Meta 1 Milhão",
+          data: Array(labels.length).fill(1000000),
+          borderColor: "#00ff9d",
+          borderDash: [5,5],
+          pointRadius: 0
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      animation: {
+        duration: 2000
+      },
+      plugins: {
+        legend: {
+          labels: {
+            color: "#fff"
+          }
+        }
+      },
+      scales: {
+        x: {
+          ticks: { color: "#aaa" }
+        },
+        y: {
+          ticks: {
+            color: "#aaa",
+            callback: function(value) {
+              return "R$ " + value.toLocaleString("pt-BR");
+            }
+          }
+        }
+      }
+    }
+  });
+}

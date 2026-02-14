@@ -16,7 +16,7 @@ h1 {
   margin: 20px auto;
   max-width: 1200px;
   border-radius: 20px;
-  box-shadow: 0 0 40px rgba(162,89,255,0.2);
+  box-shadow: 0 0 40px rgba(162, 89, 255, 0.2);
 }
 
 input {
@@ -62,7 +62,8 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding: 10px;
   text-align: left;
 }
@@ -72,7 +73,7 @@ th {
 }
 
 tr:nth-child(1) {
-  background: rgba(162,89,255,0.15);
+  background: rgba(162, 89, 255, 0.15);
   font-weight: bold;
 }
 
@@ -154,6 +155,7 @@ canvas {
   flex-direction: column;
   gap: 30px;
 }
+
 .alertaFlutuante {
   position: fixed;
   bottom: 20px;
@@ -161,17 +163,57 @@ canvas {
   background: #a259ff;
   padding: 15px 25px;
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(162,89,255,0.5);
+  box-shadow: 0 0 20px rgba(162, 89, 255, 0.5);
   animation: fadeIn 0.5s ease;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .indice {
   font-size: 18px;
   padding: 10px 0;
   border-bottom: 1px solid #1f1f2e;
+}
+
+#resultadoMilhao {
+  margin-top: 20px;
+  padding: 15px;
+  background: #121222;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(162, 89, 255, 0.3);
+}
+
+.gridMilhao {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+#graficoMilhao {
+  margin-top: 30px;
+}
+
+#resultadoMilhao {
+  margin-top: 20px;
+  padding: 15px;
+  background: #121222;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(162,89,255,0.3);
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px);}
+  to { opacity: 1; transform: translateY(0);}
 }

@@ -33,7 +33,7 @@ export function simularTodos(valor, meses) {
     });
   }
 
-  return resultados.sort((a,b) => b.total - a.total);
+  return resultados.sort((a, b) => b.total - a.total);
 }
 
 export function crescimentoMensal(valor, taxa, meses) {

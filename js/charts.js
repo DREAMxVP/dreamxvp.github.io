@@ -40,7 +40,7 @@ export function atualizarGraficoMensal(dadosMeses) {
   graficoMensal = new Chart(ctx, {
     type: "line",
     data: {
-      labels: dadosMeses.map((_, i) => `Mês ${i+1}`),
+      labels: dadosMeses.map((_, i) => `Mês ${i + 1}`),
       datasets: [{
         label: "Crescimento Mensal",
         data: dadosMeses,
